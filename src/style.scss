@@ -1,0 +1,130 @@
+$main_color: #ff4f1f;
+
+body {
+  font-family: sans-serif;
+  font-size: 1rem;
+}
+
+span {
+
+  a {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      color: $main_color;
+      font-size: 2rem;
+    }
+  }
+}
+
+#search-container {
+
+  input[type="submit"], {
+    margin-left: -5px;
+    width: 100px;
+    height: 50px;
+    border: none;
+    background-color: $main_color;
+  }
+
+  input[type="text"] {
+    width: 250px;
+    padding: 15px;
+    border: none;
+    height: 50px;
+    color: $main_color;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+}
+
+#search-results {
+  margin-top: 10px;
+  border: 1px solid red;
+  padding: 5px;
+
+  h2, h3, p {
+    margin: 0px;
+  }
+
+  h3 {
+    font-style: italic;
+  }
+
+  #gmembers {
+    display: flex;
+    margin: 5px;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .profile {
+      border: 1px solid black;
+      width: 50%;
+      height: 50%;
+      margin: 5px;
+      padding: 5px;
+      flex: 1;
+      position: relative;
+
+      img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 2px;
+      }
+
+      .namerank {
+      position: relative;
+
+        .name, .rank {
+          position: absolute;
+          margin: 5px;
+        }
+
+        .name {
+          padding: 3px;
+          margin: 0;
+        }
+
+        .rank {
+          padding: 1px;
+          size: 0.5rem;
+        }
+
+        .owner {
+          color: cyan;
+          background-color: #ff2520;
+        }
+
+        .chief {
+          color: rgb(255, 255, 0);
+          background-color: green;
+        }
+
+        .recruit {
+          color: #ffe1d2;
+          background-color: #ff3669;
+        }
+
+      }
+
+      .uuid, .joined {
+        display: none;
+      }
+
+      .showuuid:hover + .uuid {
+        display: block;
+        font-weight: bold;
+      }
+
+      .showjoined:hover + .joined {
+        display: block;
+        font-weight: bold;
+      }
+    }
+  }
+}

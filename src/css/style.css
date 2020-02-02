@@ -1,0 +1,81 @@
+body {
+  font-family: sans-serif;
+  font-size: 1rem; }
+
+span a {
+  color: black;
+  text-decoration: none; }
+  span a:hover {
+    color: #ff4f1f;
+    font-size: 2rem; }
+
+#search-container input[type="submit"] {
+  margin-left: -5px;
+  width: 100px;
+  height: 50px;
+  border: none;
+  background-color: #ff4f1f; }
+
+#search-container input[type="text"] {
+  width: 250px;
+  padding: 15px;
+  border: none;
+  height: 50px;
+  color: #ff4f1f; }
+  #search-container input[type="text"]:focus {
+    outline: none; }
+
+#search-results {
+  margin-top: 10px;
+  border: 1px solid red;
+  padding: 5px; }
+  #search-results h2, #search-results h3, #search-results p {
+    margin: 0px; }
+  #search-results h3 {
+    font-style: italic; }
+  #search-results #gmembers {
+    display: flex;
+    margin: 5px;
+    width: 100%;
+    flex-wrap: wrap; }
+    #search-results #gmembers .profile {
+      border: 1px solid black;
+      width: 50%;
+      height: 50%;
+      margin: 5px;
+      padding: 5px;
+      flex: 1;
+      position: relative; }
+      #search-results #gmembers .profile img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 2px; }
+      #search-results #gmembers .profile .namerank {
+        position: relative; }
+        #search-results #gmembers .profile .namerank .name, #search-results #gmembers .profile .namerank .rank {
+          position: absolute;
+          margin: 5px; }
+        #search-results #gmembers .profile .namerank .name {
+          padding: 3px;
+          margin: 0; }
+        #search-results #gmembers .profile .namerank .rank {
+          padding: 1px;
+          size: 0.5rem; }
+        #search-results #gmembers .profile .namerank .owner {
+          color: cyan;
+          background-color: #ff2520; }
+        #search-results #gmembers .profile .namerank .chief {
+          color: yellow;
+          background-color: green; }
+        #search-results #gmembers .profile .namerank .recruit {
+          color: #ffe1d2;
+          background-color: #ff3669; }
+      #search-results #gmembers .profile .uuid, #search-results #gmembers .profile .joined {
+        display: none; }
+      #search-results #gmembers .profile .showuuid:hover + .uuid {
+        display: block;
+        font-weight: bold; }
+      #search-results #gmembers .profile .showjoined:hover + .joined {
+        display: block;
+        font-weight: bold; }
