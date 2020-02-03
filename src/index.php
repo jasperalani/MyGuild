@@ -4,17 +4,17 @@ $object = json_decode(file_get_contents('../guilds.txt'));
 $assoc = json_decode(file_get_contents('../guilds.txt'), true);
 
 # List guilds
-function listGuilds($e = 0, $page = 1, $order = 0)
+function listGuilds($length = 0, $order = 0)
 {
     global $assoc;
     $assoc['guilds'] = $order ? array_reverse($assoc['guilds']) : $assoc['guilds'];
-    if ($e > 0) {
+    if ($length > 0) {
         $array = $assoc['guilds'];
-        $array = array_slice($array, $page * ($e - 1), $e);
+        $array = array_slice($array, 0, $length);
         echo '<div id="guild-list">';
         foreach ($array as $key => $guild) {
             echo "<span class='guild'><a href='?search=$guild'>$guild</a></span>";
-            if ($key > $e) {
+            if ($key > $length) {
                 break;
             }
         }
@@ -156,7 +156,7 @@ if (isset($_GET['search']) && !empty($_GET['search']) ){
 <?php
 
 displaySearch();
-listGuilds(400, 1, 0);
+listGuilds(400, 0);
 
 ?>
 </body>
