@@ -18,6 +18,7 @@ hr {
     padding: 3px;
     margin: 3px;
     line-height: 30px;
+
     a {
       color: black;
       text-decoration: none;
@@ -31,6 +32,11 @@ hr {
       }
     }
   }
+}
+
+.center {
+  width: 100%;
+  text-align: center;
 }
 
 #search-container {
@@ -97,7 +103,7 @@ hr {
       }
 
       .namerank {
-      position: relative;
+        position: relative;
 
         .name, .rank {
           position: absolute;
