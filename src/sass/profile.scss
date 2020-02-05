@@ -1,0 +1,38 @@
+body {
+  overflow-x: hidden;
+}
+
+#profile-wrapper {
+  position: relative;
+  .profile-inner {
+    padding: 150px 0px 0px 36px;
+    .profile-small {
+      background-color: $main_bright_color;
+      text-align: center;
+      margin: 28px;
+      padding: 100px;
+      box-shadow: $simple_shadow;
+    }
+  }
+  h1 {
+    margin-top: 20px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+#add-new-form * {
+  width: 100%;
+  text-align: center;
+  padding: 100px;
+  font-size: 1.7rem;
+  font-weight: $fw-skin;
+  .button {
+    font-weight: $fw-heav;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: $simple_shadow;
+    color: white;
+  }
+}

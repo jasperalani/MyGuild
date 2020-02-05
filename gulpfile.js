@@ -4,14 +4,17 @@ let watch = require('gulp-watch');
 var newer = require('gulp-newer');
 var notify = require('gulp-notify');
 
+let sassSource = 'src/sass/theme.scss',
+    sassDestination = 'src/css/';
+
 gulp.task('sass', function(){
-    return gulp.src('src/style.scss')
+    return gulp.src(sassSource)
         .pipe(sass())
-        .pipe(gulp.dest('src/css/'))
+        .pipe(gulp.dest(sassDestination))
 });
 
 gulp.task('watch-sass', function(){
-    gulp.watch('src/style.scss', gulp.series('sass'));
+    gulp.watch('src/sass/**/*', gulp.series('sass'));
 });
 
 var projectWWW = 'dist';

@@ -1,5 +1,24 @@
 <?php
 
+global $db;
+
+# Get the database
+function getDB()
+{
+    $mysqli = new mysqli('localhost', 'root', '', 'myguild', '3307');
+    if ($mysqli->connect_errno) {
+        echo "mysql err\n";
+        echo "Errno: " . $mysqli->connect_errno . "\n";
+        echo "Error: " . $mysqli->connect_error . "\n";
+        exit;
+    }
+    global $db;
+    $db = $mysqli;
+    return $mysqli;
+}
+
+getDB();
+
 # List guilds
 function listGuilds($length = 0, $order = 0)
 {
@@ -24,15 +43,16 @@ function listGuilds($length = 0, $order = 0)
 }
 
 # Display search bar
-function displaySearch($options = null){
-    $center = isset($options) && in_array('center',  $options) ? 'center' : '';
+function displaySearch($options = null)
+{
+    $center = isset($options) && in_array('center', $options) ? 'center' : '';
     $placeholder = isset($options) && array_key_exists('placeholder', $options) ? $options['placeholder'] : '';
     ?>
     <div id="search-container">
         <div id="search-box" class="<?= $center ?>">
             <form method="get" action="">
                 <input type="text" name="search" placeholder="<?= $placeholder ?>">
-                <input type="submit" value="Search">
+                <input class="button" type="submit" value="Search">
             </form>
         </div>
     </div>

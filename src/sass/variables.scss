@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap');
+
+$main_bright_color: #ff4f1f;
+$guild_background: rgba(255, 0, 186, 0.36);
+$simple_shadow: 0px 0px 1px grey;
+
+$fw-skin: 300;
+$fw-light: 400;
+$fw-med: 700;
+$fw-heav: 900;
+
+body {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.center {
+  width: 100%;
+  text-align: center;
+}
+
+.button {
+  margin-left: -5px;
+  width: 100px;
+  height: 50px;
+  border: none;
+  background-color: $main_bright_color;
+}
+
+.text-area {
+  width: 250px;
+  padding: 15px;
+  border: none;
+  height: 50px;
+  color: $main_bright_color;
+
+  &:focus {
+    outline: none;
+  }
+}

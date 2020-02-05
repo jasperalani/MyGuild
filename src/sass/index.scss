@@ -1,4 +1,3 @@
-$main_color: #ff4f1f;
 
 body {
   font-family: sans-serif;
@@ -14,7 +13,7 @@ hr {
 #guild-list {
   span {
     border-radius: 7px;
-    background-color: rgba(255, 0, 186, 0.36);
+    background-color: $guild_background;
     padding: 3px;
     margin: 3px;
     line-height: 30px;
@@ -46,7 +45,7 @@ hr {
     width: 100px;
     height: 50px;
     border: none;
-    background-color: $main_color;
+    background-color: $main_bright_color;
   }
 
   input[type="text"] {
@@ -54,7 +53,7 @@ hr {
     padding: 15px;
     border: none;
     height: 50px;
-    color: $main_color;
+    color: $main_bright_color;
 
     &:focus {
       outline: none;

@@ -28,7 +28,7 @@ if (isset($_GET['search']) && !empty($_GET['search']) ){
     <title>
         MyGuild
     </title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <?php include_once 'links.php'; ?>
 </head>
 <body>
 <?php
