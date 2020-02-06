@@ -6,11 +6,11 @@ $object = json_decode(file_get_contents('../guilds.txt'));
 $assoc = json_decode(file_get_contents('../guilds.txt'), true);
 
 
-# Display search results
-if (isset($_GET['search']) && !empty($_GET['search']) ){
+# Display guild results
+if (isset($_GET['guild']) && !empty($_GET['guild']) ){
     $found = false;
     foreach ($assoc['guilds'] as $key => $guild) {
-        if (strpos($guild, $_GET['search']) || $guild == $_GET['search']) {
+        if (strpos($guild, $_GET['guild']) || $guild == $_GET['guild']) {
             displayGuildInfo($guild);
             $found = true;
         }
@@ -33,8 +33,8 @@ if (isset($_GET['search']) && !empty($_GET['search']) ){
 <body>
 <?php
 
-displaySearch(['placeholder' => 'Enter a guild name...']);
-listGuilds(400, 0);
+displaySearch(['placeholder' => 'Enter a guild name...', 'center']);
+listGuilds(0, 0);
 
 ?>
 </body>

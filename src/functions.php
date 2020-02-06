@@ -24,22 +24,27 @@ function listGuilds($length = 0, $order = 0)
 {
     global $assoc;
     $assoc['guilds'] = $order ? array_reverse($assoc['guilds']) : $assoc['guilds'];
+
+    echo '<div id="guild-list">';
+
     if ($length > 0) {
         $array = $assoc['guilds'];
         $array = array_slice($array, 0, $length);
-        echo '<div id="guild-list">';
+
         foreach ($array as $key => $guild) {
-            echo "<span class='guild'><a href='?search=$guild'>$guild</a></span>";
+
+            echo "<span class='guild'><a href='?guild=$guild'>$guild</a></span>";
             if ($key > $length) {
                 break;
             }
         }
-        echo '</div>';
     } else {
         foreach ($assoc['guilds'] as $guild) {
-            echo "<span class='guild'><a href='?search=$guild'>$guild</a></span>";
+            echo "<span class='guild'><a href='?guild=$guild'>$guild</a></span>";
         }
     }
+
+    echo '</div>';
 }
 
 # Display search bar
@@ -65,14 +70,14 @@ function displayGuildInfo($name)
     if (!$name || empty($name)) {
         return 0;
     }
-
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://api.wynncraft.com/public_api.php?action=guildStats&command=' . urlencode($name));
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $res = curl_exec($curl);
-    curl_close($curl);
+//var_dump('https://api.wynncraft.com/public_api.php?action=guildStats&command=' . urlencode($name));exit;
+    exec('curl https://api.wynncraft.com/public_api.php?action=guildStats&command=StormKnights', $response);
+    var_dump($response[0]);
+    exit;
 
     $res = json_decode($res, true);
+    var_dump($res);
+    exit;
 
     $year = substr($res['created'], 0, 4);
     $mon = substr($res['created'], 5, 2);
@@ -145,3 +150,54 @@ function createOrderedProfiles($res)
         smallProfile($res['members'][$recruits]);
     }
 }
+
+# UUID Check
+# @return string|null
+function checkForUUID($profile)
+{
+    if (!is_array($profile)) {
+        return false;
+    }
+
+    if (empty($profile[2])) {
+        exec('curl https://api.mojang.com/users/profiles/minecraft/' . $profile[1], $response);
+        $object = json_decode($response[0]);
+        $uuid = $object->id;
+        $name = $object->name;
+        if (empty($uuid) || strlen($uuid) < 32) {
+            return false;
+        }
+        $db = getDB();
+        $query = "UPDATE profiles SET uuid = '$uuid' WHERE name = '$name'";
+        $update = $db->query($query);
+        if ($update) {
+            return $uuid;
+        } else {
+            return false;
+        }
+    }else{
+        return $profile[2];
+    }
+}
+
+function checkForPicture($profile)
+{
+    if(empty($profile[4])){
+        if(empty($profile[1])){
+            return false;
+        }
+        $picture = "profiles/pictures/$profile[1].png";
+        if(file_exists($picture)){
+            return true;
+        }else{
+            if(empty($profile[2])){
+                return false;
+            }else{
+                exec("curl https://crafatar.com/avatars/$profile[2]?size=80 > profiles/pictures/$profile[1].png");
+                return true;
+            }
+        }
+    }
+}
+
+//array(4) { [0]=> string(1) "2" [1]=> string(5) "Grian" [2]=> NULL [3]=> string(18) "profiles/Grian.txt" }

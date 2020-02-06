@@ -3,36 +3,101 @@ body {
 }
 
 #profile-wrapper {
-  position: relative;
-  .profile-inner {
-    padding: 150px 0px 0px 36px;
-    .profile-small {
-      background-color: $main_bright_color;
-      text-align: center;
-      margin: 28px;
-      padding: 100px;
-      box-shadow: $simple_shadow;
+
+  h1 {
+    margin: 20px 17px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    grid-auto-rows: 1fr;
+
+    #add-new {
+      padding-top: 4rem;
+      cursor: pointer;
+    }
+
+    #add-new:hover {
+        background-color: $main_bright_color;
+        -webkit-transition: background-color 1000ms linear;
+        -ms-transition: background-color 1000ms linear;
+        transition: background-color 1000ms linear;
+      }
+  }
+
+  .grid::before {
+    content: '';
+    width: 0;
+    padding-bottom: 100%;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+
+  .grid > *:first-child {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+
+  /* Just to make the grid visible */
+  .grid > * {
+    padding-top: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0.1);
+    border: 20px white solid;
+
+
+
+    h5 {
+      padding-top: 5px;
+      &:hover {
+        cursor: pointer;
+        color: $main_bright_color;
+      }
     }
   }
-  h1 {
-    margin-top: 20px;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+
+  //position: relative;
+  //.profile-inner {
+  //  padding: 150px 0px 0px 36px;
+  //  .profile-small {
+  //    background-color: $main_bright_color;
+  //    text-align: center;
+  //    margin: 28px;
+  //    padding: 100px;
+  //    box-shadow: $simple_shadow;
+  //  }
+  //}
+  //h1 {
+  //  margin-top: 20px;
+  //  position: fixed;
+  //  left: 50%;
+  //  transform: translateX(-50%);
+  //}
 }
 
+#profile-body {
+  overflow: hidden;
+}
+
+#add-new-form{
+  position: absolute;
+}
 #add-new-form * {
   width: 100%;
   text-align: center;
-  padding: 100px;
+  padding: 109px;
   font-size: 1.7rem;
-  font-weight: $fw-skin;
+  font-weight: 300;
+  position: relative;
+  top: -60px;
+
   .button {
     font-weight: $fw-heav;
     margin: 10px;
     border-radius: 5px;
-    box-shadow: $simple_shadow;
+    //box-shadow: $simple_shadow;
     color: white;
   }
 }

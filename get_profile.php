@@ -1,8 +1,12 @@
 <?php
 
-#
-$player = 'Kikis';
-$url = "https://api.wynncraft.com/v2/player/$player/stats";
+$player = '';
+$url = "https://api.wynncraft.com/v2/player/Kikis/stats";
 
-exec('curl '.$url, $response);
-file_put_contents($player.'.txt', $response);
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+$res = curl_exec($curl);
+curl_close($curl);
+
+file_put_contents('guilds.txt', $res);
